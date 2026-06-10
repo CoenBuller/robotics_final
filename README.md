@@ -164,9 +164,9 @@ give your input for the retraining model as your_model_name.pt
 The best model (lowest validation loss) is saved to `../<your_model_name>.pt`,
 overwriting the current weights used by the live system.
 
-When retrained, please check the order of the class names that it prints in the stdout, they must match with the class names that are in AudioStream.py, otherwise the actions will not be linked to the right class labels, and it won't perform as intended.
+When you retrain the model, please check the order of the class names that it prints in the stdout, they must match the order of the class names that are in AudioStream.py, otherwise the actions will not be linked to the right class labels, and it won't perform as intended.
 
-Change the variable "CLASSES" in line no.34 in AudioStream.py to the correct order from your retrained model's order. For example, the standard class order in AudioStream.py when best_model.pt is used, its {0: "silence", 1: "harmonica", 2: "whistle", 3: "clap"}, and lets say, your retrained the output of the class order at the beginning of the training was [harmonica, clap, silence, whistle], then change line no.34 to {0: "harmonica", 1: "clap", 2: "silence", 3: "whistle"}.
+Change the variable "CLASSES" in line no.34 in AudioStream.py to the correct order from your retrained model's order. For example, the standard class order in AudioStream.py when using 'best_model.pt' is  {0: "silence", 1: "harmonica", 2: "whistle", 3: "clap"}. However, when retraining the model and the output of the class order at the beginning of the training was [harmonica, clap, silence, whistle], then change line no.34 to {0: "harmonica", 1: "clap", 2: "silence", 3: "whistle"}.
 
 
 If you want to test your new model run the following command:
