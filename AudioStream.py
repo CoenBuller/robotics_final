@@ -109,8 +109,8 @@ class CarState:
     drive_state: str = "stopped"
     is_turning:bool = False
     non_harmonica_streak:int= 0
-    frames_since_last_drive_cmd: int   = 10**6
-    frames_since_harmonica:int   = 10**6
+    frames_since_last_drive_cmd: int = 10**6
+    frames_since_harmonica:int = 10**6
 
 # This is a helper function that sends a motor command to the Pi server by calling the _send method of the RemoteMotorControl object. It also checks if motor controls are enabled before sending the command.
 def mix_to_mono(chunk: np.ndarray) -> np.ndarray:
@@ -324,7 +324,6 @@ def process_one_frame(
         return
     motors_active = car.forward or car.backward or car.turning
     audio = apply_spectral_subtraction(ap, motors_active, alpha)
-    # audio=ap.window
     ap.recording_cleaned = np.concatenate(
         [ap.recording_cleaned, audio[-ap.chunk_size:].astype(np.int16)]
     )
